@@ -230,7 +230,11 @@ def compute_probability(Mu_t,SG,SQ):
     for i in range(years):
         lost_num[i] = len(np.where(Z[:,i]<=0)[0])
     lost_num/=1000
+    plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文标签
+    plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
     plt.plot(years_array,lost_num)
+    plt.xlabel('t/年')
+    plt.ylabel('失效概率%')
     plt.show()
 
 
