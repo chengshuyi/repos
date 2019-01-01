@@ -46,6 +46,8 @@ def start_compute(con,ste,stu,loa):
     b1 = get_random_sample(ste.b1)
     d = get_random_sample(stu.d)
     p_t = stud_varying_model(b1,d,'正态分布')
+    #print(p_t)
+    #return
 
     fy = get_random_sample(ste.fy)
     be = get_random_sample(con.be)
@@ -225,7 +227,8 @@ def resist_compute(fy,fc,be,hc,Ec,Astd,fstd,nr,p_t,hw,t1,t2_t,fc_t,b2,tw_t,b1):
     return Mu_t
 
 def compute_probability(Mu_t,SG,SQ):
-    Z = Mu_t - a_m(SG) - a_m(SQ)
+    Z = Mu_t/1000000 - a_m(SG) - a_m(SQ)
+    #print(Mu_t)
     lost_num = np.zeros(years)
     for i in range(years):
         lost_num[i] = len(np.where(Z[:,i]<=0)[0])
